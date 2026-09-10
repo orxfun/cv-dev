@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="Curriculum vitae of Uğur Arikan, operations research and data science professional with experience in aviation, network design, optimization, and software engineering.">
+    <title>Uğur Arikan | Rust Software Engineering</title>
+    <style>
+        :root {
+            --ink: #17324d;
+            --muted: #536575;
+            --accent: #007f86;
+            --accent-dark: #00666c;
+            --wash: #edf5f5;
+            --line: #d8e3e6;
+            --paper: #ffffff;
+            --canvas: #e7edef;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            background: var(--canvas);
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: var(--canvas);
+            font-family: "Aptos", "Segoe UI", sans-serif;
+            font-size: 10.25pt;
+            line-height: 1.42;
+            text-rendering: optimizeLegibility;
+        }
+
+        p,
+        li,
+        td {
+            text-align: left;
+        }
+
+        a {
+            color: inherit;
+            text-decoration-color: rgba(0, 127, 134, .45);
+            text-underline-offset: 2px;
+        }
+
+        a:hover {
+            color: var(--accent-dark);
+        }
+
+        .page {
+            width: min(210mm, calc(100% - 32px));
+            min-height: 85vh;
+            margin: 28px auto;
+            padding: 17mm 17mm 14mm;
+            background: var(--paper);
+            box-shadow: 0 12px 36px rgba(23, 50, 77, .13);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .masthead {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 24px;
+            align-items: end;
+            padding-bottom: 17px;
+            border-bottom: 4px solid var(--accent);
+        }
+
+        .name {
+            margin: 0;
+            color: var(--ink);
+            font-size: 29pt;
+            font-weight: 750;
+            letter-spacing: .045em;
+            line-height: .98;
+        }
+
+        .role {
+            margin: 9px 0 0;
+            color: var(--accent);
+            font-size: 10.5pt;
+            font-weight: 750;
+            letter-spacing: .13em;
+            line-height: 1.2;
+        }
+
+        .contact {
+            margin: 0;
+            color: var(--muted);
+            font-size: 9pt;
+            line-height: 1.65;
+            text-align: right;
+        }
+
+        .contact strong {
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        .contact a {
+            white-space: nowrap;
+        }
+
+        .profile {
+            margin: 18px 0 18px;
+            color: var(--ink);
+            font-size: 10pt;
+            line-height: 1.52;
+            max-width: 96%;
+            text-align: left;
+        }
+
+        .section {
+            margin-top: 19px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            margin: 0 0 9px;
+            color: var(--accent);
+            font-size: 9.5pt;
+            font-weight: 800;
+            letter-spacing: .16em;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        .section-title::after {
+            content: "";
+            height: 1px;
+            flex: 1;
+            background: var(--line);
+        }
+
+        .expertise {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 9px;
+        }
+
+        .expertise-card {
+            padding: 12px 13px;
+            background: var(--wash);
+            border-top: 2px solid rgba(0, 127, 134, .5);
+        }
+
+        .expertise-card p {
+            margin: 0;
+            color: var(--ink);
+            font-size: 9pt;
+            font-weight: 550;
+            line-height: 1.5;
+        }
+
+        .role-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 18px;
+            margin-top: 13px;
+        }
+
+        .role-row h3 {
+            margin: 0;
+            font-size: 11pt;
+            line-height: 1.2;
+        }
+
+        .role-row .meta {
+            color: var(--muted);
+            font-size: 9pt;
+        }
+
+        .dates {
+            flex: 0 0 auto;
+            color: var(--accent);
+            font-size: 9pt;
+            font-weight: 750;
+            white-space: nowrap;
+        }
+
+        ul {
+            margin: 7px 0 0 18px;
+            padding: 0;
+        }
+
+        li {
+            margin: 0 0 4px;
+            padding-left: 3px;
+            color: var(--muted);
+        }
+
+        li::marker {
+            color: var(--accent);
+        }
+
+        .education {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .education td {
+            padding: 7px 0;
+            border-bottom: 1px solid var(--line);
+            vertical-align: top;
+        }
+
+        .education td:last-child {
+            width: 92px;
+            color: var(--accent);
+            font-size: 9pt;
+            font-weight: 750;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .degree {
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        .school,
+        .detail {
+            color: var(--muted);
+            font-size: 9pt;
+        }
+
+        .page-break {
+            break-before: page;
+        }
+
+        .publication-intro {
+            margin: 0 0 12px;
+            color: var(--muted);
+        }
+
+        .publication {
+            margin: 0 0 11px;
+            padding-left: 17px;
+            position: relative;
+        }
+
+        .publication::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: .62em;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .publication a {
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        .publication .journal {
+            color: var(--muted);
+            font-size: 9pt;
+        }
+
+        .initiative {
+            margin: 0 0 10px;
+            color: var(--muted);
+        }
+
+        .initiative strong {
+            color: var(--ink);
+        }
+
+        .technical {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .technical-block {
+            padding: 12px 14px;
+            background: var(--wash);
+        }
+
+        .technical-block h3 {
+            margin: 0 0 7px;
+            color: var(--accent-dark);
+            font-size: 8.5pt;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .technical-block p {
+            margin: 0;
+            color: var(--ink);
+            font-size: 9pt;
+            line-height: 1.55;
+        }
+
+        .footer {
+            margin-top: auto;
+            padding-top: 9px;
+            border-top: 1px solid var(--line);
+            color: var(--accent);
+            font-size: 7.8pt;
+            font-weight: 750;
+            letter-spacing: .09em;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            .page {
+                width: 100%;
+                min-height: 0;
+                margin: 0;
+                padding: 28px 22px;
+                box-shadow: none;
+            }
+
+            .masthead {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .contact {
+                text-align: left;
+            }
+
+            .profile {
+                max-width: none;
+            }
+
+            .expertise,
+            .technical {
+                grid-template-columns: 1fr;
+            }
+
+            .role-row {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 3px;
+            }
+
+            .dates {
+                order: -1;
+            }
+
+            .page-break {
+                margin-top: 30px;
+                border-top: 1px solid var(--line);
+                padding-top: 30px;
+            }
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 8mm 9mm;
+            }
+
+            html,
+            body {
+                background: #fff;
+            }
+
+            .page {
+                width: 100%;
+                min-height: calc(297mm - 16mm);
+                margin: 0;
+                padding: 10mm 12mm 8mm;
+                box-shadow: none;
+            }
+
+            .page-break {
+                break-before: page;
+            }
+
+            .section {
+                margin-top: 14px;
+            }
+
+            a {
+                text-decoration: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="page">
+        <header class="masthead">
+            <div>
+                <h1 class="name">UĞUR ARIKAN</h1>
+                <p class="role">RUST SOFTWARE ENGINEER | TECHNICAL LEAD</p>
+            </div>
+            <p class="contact">
+                <strong>Bonn, Germany</strong><br>
+                +49 171 3015770<br>
+                <a href="mailto:orx.ugur.arikan@gmail.com" target="_blank"
+                    rel="noopener noreferrer">orx.ugur.arikan@gmail.com</a><br>
+                <a href="https://linkedin.com/in/uarikan" target="_blank"
+                    rel="noopener noreferrer">linkedin.com/in/uarikan</a><br>
+                <a href="https://github.com/orxfun" target="_blank" rel="noopener noreferrer">github.com/orxfun</a>
+            </p>
+        </header>
+
+        <p class="profile">Software engineer and technical lead with a focus on Rust, high-performance systems, and
+            reusable software for computationally demanding applications. I design concurrent and parallel execution
+            components and build APIs and visualization layers used in decision-support workflows. My background in
+            operations research and data science adds depth in algorithms, mathematical modeling, and complex systems.
+        </p>
+
+        <section class="section">
+            <h2 class="section-title">Core areas</h2>
+            <div class="expertise">
+                <article class="expertise-card">
+                    <p>Rust engineering<br>Systems and libraries<br>Technical leadership</p>
+                </article>
+                <article class="expertise-card">
+                    <p>Parallel computation<br>Concurrency and performance<br>Production APIs</p>
+                </article>
+                <article class="expertise-card">
+                    <p>Optimization algorithms<br>Applied data science<br>Open-source contribution</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Professional experience</h2>
+            <div class="role-row">
+                <h3>Principal Operations Research &amp; Data Scientist <span class="meta">| DHL Data &amp; AI | Bonn,
+                        Germany</span></h3><span class="dates">2018 - Present</span>
+            </div>
+            <ul>
+                <li>Design and deliver production software for computationally demanding optimization and
+                    decision-support applications, from algorithm implementation through deployment and operational use.
+                </li>
+                <li>Develop decision-support tools and optimization workflows for large-scale transportation and
+                    logistics
+                    networks, supporting capacity, routing, and planning decisions in complex operational settings.</li>
+                <li>Build scalable services and reusable components in Rust, Python, C#, and TypeScript, covering
+                    algorithm engineering, asynchronous APIs, visualization, and deployment.</li>
+                <li>Work closely with business, network, and technical stakeholders to translate planning questions into
+                    tractable mathematical models and usable decision-support applications.</li>
+                <li>Lead the adoption of Rust for optimization-focused software, establishing production-oriented
+                    practices for performance, testing, maintainability, and reuse.</li>
+                <li>Mentor colleagues and collaborate with technical, analytical, and operational stakeholders to
+                    turn complex requirements into maintainable software systems.</li>
+            </ul>
+
+            <div class="role-row">
+                <h3>Postdoctoral Researcher <span class="meta">| Singapore University of Technology and Design |
+                        Singapore</span></h3><span class="dates">2014 - 2018</span>
+            </div>
+            <ul>
+                <li>Conducted research in transportation systems, utility theory, discrete choice models, and robust
+                    optimization; supervised student projects and contributed to multidisciplinary design teams.</li>
+            </ul>
+        </section>
+
+        <footer class="footer">UĞUR ARIKAN &nbsp;•&nbsp; OPERATIONS RESEARCH | OPTIMIZATION | SOFTWARE ENGINEERING
+        </footer>
+    </main>
+
+    <main class="page page-break">
+        <section class="section" style="margin-top: 0">
+            <h2 class="section-title">Software engineering &amp; open source</h2>
+            <ul>
+                <li>Apply parallel computation, concurrency, profiling, and benchmarking to high-performance numerical
+                    and optimization workloads, designing reusable components and scalable software architectures.</li>
+                <li>Publish and maintain a collection of public <a href="https://github.com/orxfun" target="_blank"
+                        rel="noopener noreferrer">orx-*</a> Rust crates, including the
+                    <a href="https://github.com/orxfun/orx-parallel" target="_blank"
+                        rel="noopener noreferrer">orx-parallel</a> library for parallel computation, as well as crates
+                    for concurrent data structures, general-purpose data structures, closure utilities, network-flow
+                    optimization, and other numerical methods. The projects emphasize reusable abstractions,
+                    documentation, testing, and benchmarking, and are published via <a
+                        href="https://crates.io/users/orxfun" target="_blank" rel="noopener noreferrer">crates.io</a>.
+                </li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Education</h2>
+            <table class="education">
+                <tr>
+                    <td><span class="degree">PhD, Industrial Engineering &amp; Operations Research</span> <span
+                            class="school">|
+                            Middle East Technical University</span><br><span class="detail">Dissertation: Airline
+                            Disruption
+                            Management</span></td>
+                    <td>2009 - 2014</td>
+                </tr>
+                <tr>
+                    <td><span class="degree">MSc, Industrial Engineering &amp; Operations Research</span> <span
+                            class="school">|
+                            Middle East Technical University</span><br><span class="detail">Dissertation: Two-Sided
+                            Assembly Line
+                            Balancing: Models and Heuristics</span></td>
+                    <td>2006 - 2009</td>
+                </tr>
+                <tr>
+                    <td><span class="degree">BSc, Industrial Engineering &amp; Operations Research</span> <span
+                            class="school">|
+                            Middle East Technical University, Ankara, Turkey</span></td>
+                    <td>2002 - 2006</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Further training</h2>
+            <table class="education">
+                <tr>
+                    <td><span class="degree">Modeling and Simulation of Transportation Networks</span> <span
+                            class="school">|
+                            Massachusetts Institute of Technology</span></td>
+                    <td>Jul 2015</td>
+                </tr>
+                <tr>
+                    <td><span class="degree">Operations Research Peripatetic Postgraduate Program</span> <span
+                            class="school">|
+                            JKU Linz</span></td>
+                    <td>Jul 2013</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Research &amp; publications</h2>
+            <p class="publication-intro">Research and peer-reviewed publications in airline disruption management,
+                network-based recovery, traffic equilibrium, and applied optimization in logistics and transportation.
+            </p>
+            <p class="publication"><a href="https://pubsonline.informs.org/doi/10.1287/trsc.2016.0716" target="_blank"
+                    rel="noopener noreferrer">Flight Network-Based
+                    Approach for Integrated Airline Recovery with Cruise Speed Control</a><br><span
+                    class="journal">INFORMS
+                    Transportation Science</span></p>
+            <p class="publication"><a href="https://doi.org/10.1007/s10479-013-1424-2" target="_blank"
+                    rel="noopener noreferrer">Integrated Aircraft and Passenger
+                    Recovery with Cruise Time Controllability</a><br><span class="journal">Annals of Operations
+                    Research</span>
+            </p>
+            <p class="publication"><a href="https://doi.org/10.1016/j.trb.2016.05.002" target="_blank"
+                    rel="noopener noreferrer">On the flexibility of using marginal
+                    distribution choice models in traffic equilibrium</a><br><span class="journal">Transportation
+                    Research Part B:
+                    Methodological</span></p>
+            <p class="publication"><a href="https://pubsonline.informs.org/doi/10.1287/trsc.2019.0910" target="_blank"
+                    rel="noopener noreferrer">Distributionally Robust
+                    Markovian Traffic Equilibrium</a><br><span class="journal">INFORMS Transportation Science</span></p>
+            <p class="publication"><a href="https://pubsonline.informs.org/doi/10.1287/inte.2023.0031" target="_blank"
+                    rel="noopener noreferrer">Human-Centric Parcel
+                    Delivery with Operations Research and Machine Learning</a><br><span class="journal">INFORMS
+                    Interfaces</span></p>
+        </section>
+
+        <footer class="footer">UĞUR ARIKAN &nbsp;•&nbsp; OPERATIONS RESEARCH | OPTIMIZATION | SOFTWARE ENGINEERING
+        </footer>
+    </main>
+
+    <main class="page page-break">
+        <section class="section" style="margin-top: 0">
+            <h2 class="section-title">Selected talks &amp; technical writing</h2>
+            <p class="publication"><a
+                    href="https://orxfun.github.io/talk-composing-zero-cost-abstractions-in-route-optimization/"
+                    target="_blank" rel="noopener noreferrer">Composing Zero-Cost Abstractions in Route
+                    Optimization</a><br>
+                <span class="journal">Talk on the intersection of Rust and optimization</span>
+            </p>
+            <p class="publication"><a href="https://orxfun.github.io/orxfun-notes/" target="_blank"
+                    rel="noopener noreferrer">orxfun notes</a><br><span class="journal">Technical writing on Rust and
+                    software engineering, including publications in This Week in Rust</span></p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Selected technical capabilities</h2>
+            <div class="technical">
+                <article class="technical-block">
+                    <h3>Optimization</h3>
+                    <p>Mixed-integer optimization<br>Network optimization<br>Routing and facility
+                        location<br>Heuristics, decomposition, and local search<br>Scenario analysis and decision
+                        support</p>
+                </article>
+                <article class="technical-block">
+                    <h3>Engineering</h3>
+                    <p>Rust, Python, C#, TypeScript/React, SQL<br>Parallel computation and concurrency<br>Production
+                        service design<br>Cloud deployment and integration<br>Profiling, benchmarking, and reusable
+                        library design</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Languages</h2>
+            <p>English (fluent) &nbsp;|&nbsp; German (intermediate) &nbsp;|&nbsp; Turkish (native)</p>
+        </section>
+
+        <footer class="footer">UĞUR ARIKAN &nbsp;•&nbsp; OPERATIONS RESEARCH | OPTIMIZATION | SOFTWARE ENGINEERING
+        </footer>
+    </main>
+</body>
+
+</html>
