@@ -1,0 +1,11 @@
+{
+    "type": "module",
+    "scripts": {
+        "pdf": "node html_to_pdf.mjs",
+        "pdf:or": "node html_to_pdf.mjs cv_or.html cv_or.pdf",
+        "pdf:sw": "node html_to_pdf.mjs cv_sw.html cv_sw.pdf"
+    },
+    "dependencies": {
+        "playwright-chromium": "^1.55.0"
+    }
+}
